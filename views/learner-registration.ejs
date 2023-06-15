@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="/css/learner-reg.css">
+    <link rel="stylesheet icon" href="/img/logo7-removebg-preview.png">
+    <title>Find Tutor</title>
+</head>
+
+<body onload="loading()">
+    <div class="loader" id="loader">
+        <!-- <img src="gif/Loading_2.gif" alt=""> -->
+    </div>
+    <!-- <div class="back">
+        <i class="fa-solid fa-chevron-left"></i>
+    </div>
+
+    <div class="logo-btn">
+        <a href="#"><img class="logo" src="img/logo2.png" alt=""></a>
+    </div> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <!-- <div class="left-nav-bar">
+        <img src="/img/logo2.png" alt="">
+        <p>Tutor's Locator.</p>
+        </div> -->
+        <div class="container bg-dark">
+            <a href="#" class="navbar-brand"><img src="/img/logo7-removebg-preview.png" alt=""> Thuto Pele</a>
+  
+            <button class="navbar-toggler" data-bs-target="#my-nav" data-bs-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+  
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="my-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class = "nav-item active">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-home me-1"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/learner/login" class="nav-link">
+                            <i class="fas fa-user-plus me-1"></i>
+                            Login
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/about" class="nav-link">
+                            <i class="fas fa-globe me-1"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/contact" class="nav-link">
+                            <i class="fas fa-envelope me-1"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="section-A">
+        <div class="section-container">
+            <div class="left-container">
+                <div class="left-content">
+                    <div class="line"></div>
+                    <h4>Apply Now...</h4>
+                    <div class="ready">
+                        <p><span>Ready To Find</span> <br>Your Perfect Tutor?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-container">
+                <div class="images">
+                    <img src="/images/20230111_070052.jpg" alt="" class="first-img">
+                </div>
+                <div class="images">
+                    <img src="/images/20230111_070046.jpg" alt="" class="first-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-B">
+        <div class="b-content">
+            <div class="left-b">
+                <div class="left-b-content">
+                    <h1>Need A Tutor?</h1>
+                    <div class="line"></div>
+                    <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae doloribus magnam qui, corrupti laborum exercitationem modi ex doloremque iusto amet quibusdam sequi aspernatur voluptatem sunt velit. Quo, atque. Dignissimos accusantium praesentium placeat obcaecati adipisci quam nesciunt.</p>
+
+                    <div class="icon-par">
+                        <p><i class="fa-solid fa-circle-check"></i>  Online & In-Person tutoring.</p>
+                        <p><i class="fa-solid fa-circle-check"></i>  Personalised lessons.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-b">
+                <div class="right-b-content">
+                    <div class="intro">
+                        <div class="line"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis.</p>
+                    </div>
+
+                    <div class="inputs">
+                        <label for="name-el">Name:</label>
+                        <input type="text" id="name-el" placeholder="Enter Full Name...">
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" placeholder="Enter Last Name...">
+                        <div class="contact">
+                           <div class="eml">
+                                <label for="email-el">Email:</label>
+                                <input type="email" id="email-el" placeholder="Enter Valid Email...">
+                           </div>
+
+                            <div class="phne">
+                                <label for="phone-el">Phone:</label>
+                                <input type="text" id="phone-el" max="10" placeholder="Enter Phone Number...">
+                            </div>
+                        </div>
+
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" placeholder="Enter Phone Number...">
+
+                        <label for="">Subject Specifics:</label>
+                        <textarea
+                            name="" 
+                            id="subjects"
+                            cols="30" 
+                            rows="10"
+                            placeholder="Specify Subject(s) You Need Tutoring For..."></textarea>
+                        <label for="password1">Choose password:</label>
+                        <input type="password" id="password1" placeholder="Enter Password...">
+
+                        <label for="password2">Confirm password:</label>
+                        <input type="password" id="password2" placeholder="Confirm Passoword...">
+                        <div class="btn-cont">
+                            <button id="submit-btn" onclick="register()"> Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="footer-cont">
+            <p>copyrights &copy;2023</p>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+
+    <script src="/javascript/learner-reg.js"></script>
+</body>
+
+</html>

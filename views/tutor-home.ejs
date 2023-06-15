@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="/css/tutor-home.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/logo2.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gajraj+One&display=swap" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body onload="loading()">
+    <div class="loader" id="loader">
+        <!-- <img src="gif/Loading_2.gif" alt=""> -->
+    </div>
+    <nav>
+        <div class="left-nav-bar">
+            <img src="/img/logo2.png" alt="">
+            <p><span>Tutor's</span> Locator.</p>
+        </div>
+        <div class="profile">
+            <div class="image">
+                <img src="/Tutors/<%= user.Profile_Photo %>" alt="">
+            </div>
+                <div class="dropdown">
+                    <input type="hidden" value="<%= user.Name %>" id="t_name">
+                    <input type="hidden" value="<%= user.Surname %>" id="t_sname">
+                    <p class="name-el"><%= user.Name %> <%= user.Surname %><i class="fa-solid fa-chevron-down"></i></p>
+                    <div class="dropdown-content">
+                        <a href="#">View Profile</a>
+                        <a href="#" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+            
+        </div>
+
+    </nav>
+
+    <!-- STATUS UPDATE MODAL -->
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update Status:</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select name="" id="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option value="#">Please select...</option>
+                        <option value="Declined">Decline</option>
+                        <option value="Successful">Accept</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary update">Update</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <!-- STATUS UPDATE END -->
+
+
+    <div class="modal fade announcement" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Announcement:</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <select name="" id="module_options" class="form-select form-select-lg mb-3">
+                        <option value="#">Please select module...</option>
+                        <option value="<%= user.Subject_Name %>"><%= user.Subject_Name %></option>
+                    </select>
+                    <textarea name="" id="message" cols="30" rows="10"
+                        placeholder="Type In Your Announcement..." class="form-textarea form-textarea-lg mb-3"></textarea>
+
+                    <div class="argency">
+                        <input type="checkbox" class="form-input form-in-ut-lg mb-3 urgent">
+                        <p class="form-text form-text-lg mb-3"><strong>Urgent?</strong></p>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary update" onclick="announcement()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="uid" style="display: none"><%= token %></p>
+    <section id="main-section">
+        <div class="sec-nav-bar">
+            <div class="links">
+                <p class="switch-bar active btn1">Dashboard</p>
+                <p class="switch-bar btn2">Calender</p>
+                <p class="switch-bar btn3">View Profile</p>
+                <p class="switch-bar btn4">Announcement</p>
+            </div>
+        </div>
+    
+        <div class="switch-section">
+            <div class="switch-content active">
+                <div class="img-log">
+                    <img src="/img/logo2.png" alt="">
+                </div>
+                <div class="details">
+                    <div class="heading">
+                        <input type="hidden" value="<%= user._id %>" id="uid">
+                        <h1 class="all-learners">Dashboard:</h1>
+                        <div class="line"></div>
+                    </div>
+                        <div class="table-div table-responsive">
+                            <div class="results">
+                            </div>
+                            <table class="table table-striped" id="table-id">
+                                <thead>
+                                    <tr>
+                                        <th>#:</th>
+                                        <th>Learner Name:</th>
+                                        <th>Learner Surname:</th>
+                                        <th>Learner Email:</th>
+                                        <th>Learner Phone:</th>
+                                        <th>Module:</th>
+                                        <th>Status:</th>
+                                        <th>Action:</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tutor-table">
+                                </tbody>
+                            </table>
+                        </div>
+                   
+
+                </div>
+            </div>
+    
+            <!-- CALENDER -->
+
+            <div class="switch-content">
+                <div class="details">
+                    <div class="img-log">
+                        <img src="/img/logo2.png" alt="">
+                    </div>
+                    <div class="calender-cont">
+                        <div class="heading">
+                            <h1 class="all-learners">Calender</h1>
+                            <div class="line"></div>
+                        </div>
+    
+                        <div class="table-div">
+                            <div class="months">
+                                <ul>
+                                    <li class="prev" onclick="prev()">&#10094;</li>
+                                </ul>
+                                <div class="months-tit">
+                                    <span class="month-name"></span>
+                                    <span class="year"></span>
+                                </div>
+    
+                                <ul>
+                                    <li>
+                                    <li class="next" onclick="next()">&#10095;</li>
+                                    </li>
+                                </ul>
+                            </div>
+    
+                            <div class="weekdays">
+                                <ul>
+                                    <li>Mon</li>
+                                    <li>Tue</li>
+                                    <li>Wed</li>
+                                    <li>Thu</li>
+                                    <li>Fri</li>
+                                    <li>Sat</li>
+                                    <li>Sun</li>
+                                </ul>
+                            </div>
+    
+                            <div class="days">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROFILE -->
+
+            <div class="switch-content">
+                <div class="img-log">
+                    <img src="/img/logo2.png" alt="">
+                </div>
+                <div class="container">
+                    <header>Personal Information</header>
+                    
+                    <div class="btns">
+                        <a href="/tutor/update/<%= user._id%>/<%= token %>" class="edit-btn" data-toggle="modal" data-target="#ModalCenter">Edit Profile</a>
+                        <button class="submit-btn" onclick="updateProfile()">Save Changes</button>
+                    </div>
+
+                    <div class="main-content">
+                        <div class="first">
+                            <div class="personal-details">
+                                <span>Personal Details:</span>
+
+                                <div class="fields">
+                                    <div class="input-fields">
+                                        <label for="">Full Name</label>
+                                        <input type="text" value="<%= user.Name%>" id="first-name" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Last Name</label>
+                                        <input type="text" value="<%= user.Surname%>" id="last-name" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Gender</label>
+                                        <input type="text" value="<%= user.Gender %>" id="gender" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="personal-details">
+                                <span>Contact Details:</span>
+
+                                <div class="fields">
+                                    <div class="input-fields">
+                                        <label for="">Email</label>
+                                        <input type="text" value="<%= user.Email%>" id="email-add" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Phone</label>
+                                        <input type="text" value="<%= user.Phone %>" id="cell" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Altenative Phone</label>
+                                        <input type="text" value="<%= user.Alt_Phone %>" id="alt-phone" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="personal-details">
+                                <span>Address Details:</span>
+
+                                <div class="fields">
+                                    <div class="input-fields">
+                                        <label for="">City Name</label>
+                                        <input type="text" value="<%= user.City %>" id="city-el" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Date Of Birth:</label>
+                                        <input type="text" value="<%= user.Date_Of_Birth %>" id="location" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Address</label>
+                                        <input type="text" value="<%= user.Address%>" id="address" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="personal-details">
+                                <span>Subject Details:</span>
+
+                                <div class="fields">
+                                    <div class="input-fields">
+                                        <label for="">Subject Name</label>
+                                        <input type="text" value="<%= user.Subject_Name%>" id="special" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <label for="">Subject Price</label>
+                                        <input type="text" value="<%= user.Subject_Price%>" id="price" disabled>
+                                    </div>
+                                    <div class="input-fields">
+                                        <div class="input-fields">
+                                            <label for="">Tutoring Method:</label>
+                                            <input type="text" value="<%= user.Subject_Method%>" id="price" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="personal-details">
+                                <span>About Me:</span>
+
+                                <div class="fields">
+                                    <div class="input-fields">
+                                        <label for="">Information:</label>
+                                        <textarea 
+                                            name="" 
+                                            id="" 
+                                            cols="30" 
+                                            rows="10"
+                                            placeholder="<%= user.About_Me%>" disabled></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="switch-content">
+                <div class="details">
+                    <div class="announcement">
+                        <div class="heading">
+                            <h1 class="all-learners">Announcements You Made:</h1>
+                            <div class="line"></div>
+                        </div>
+    
+                        <div class="anno-btn">
+                            <button data-bs-toggle="modal" data-bs-target="#ModalCenter">New Announcement</button>
+                        </div>
+                        <div class="table-div">
+    
+                            <table class="table table-striped" id="tabled-id">
+                                <thead>
+                                    <tr>
+                                        <th>#:</th>
+                                        <th>Date_Posted:</th>
+                                        <th>Module:</th>
+                                        <th>Message:</th>
+                                        <th>Action:</th>
+    
+                                    </tr>
+                                </thead>
+                                <tbody id="annonce-table">
+    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <footer>
+                <p>Copyright&copy; 2022.</p>
+                <p>All Rights Reserved.</p>
+            </footer> -->
+        </div>
+    </section>
+
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+
+    <script src="/javascript/tutor-home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: whitesmoke;
+    background-position: center;
+    background-size: cover;
+}
+
+/* --------------------------------- */
+.white-bg{
+    background-color: white;
+    height: 60px;
+}
+.link-container{
+    position: relative;
+    height: 80px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.link-container .links{
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+.link-container .links ul{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.link-container .links ul li{
+    position: relative;
+    list-style: none;
+    margin-left: 25px;
+}
+.link-container .links ul li a{
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 19px;
+    color: rgb(180, 179, 179);
+    gap: 20px;
+}
+.link-container .links ul li a:hover{
+    position: relative;
+    color: darkcyan;
+    font-style: italic;
+    border-bottom: 2px solid white;
+}
+
+/* student-Section */
+
+#student-Section{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+#student-Section .left-section{
+    width: 20%;
+}
+#student-Section .right-section{
+    width: 78%;
+}
+
+/* End of student-Section */
+
+.profile{
+    position: relative;
+    gap: 20px;
+    margin-right: 50px;
+    padding: 10px;
+}
+.profile .inputs{
+    position: relative;
+    text-align: center;
+}
+.profile .inputs p{
+    position: relative;
+    color: rgb(181, 181, 181);
+    font-size: 20px;
+    font-weight: bold;
+}
+.profile .inputs .email-el{
+    position: relative;
+    color: rgb(84, 83, 83);
+    margin-top: -20px;
+}
+.profile .image{
+    position: relative;
+
+}
+.profile .image img{
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.stud-content{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.left-contents{
+    position: relative;
+    width: 45%;
+}
+.right-contents{
+    position: relative;
+    width: 45%;
+}
+.content-ann{
+    overflow-y: scroll;
+    height: 300px;
+}
+.stud-content .modules{
+    position: relative;
+    padding: 15px;
+    margin: 30px;
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px 2px rgba(105, 105, 105, 0.52);
+}
+.heading{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.heading h2{
+    position: relative;
+    border-bottom: 2px solid rgb(124, 124, 150);
+    color: rgb(180, 179, 179);
+    width: fit-content;
+}
+.modules p{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    margin: 2px;
+    padding: 7px;
+    border-bottom: 2px solid rgb(180, 179, 179);
+    border-radius: 10px;
+    font-weight: 500;
+}
+.announcement{
+    position: relative;
+    padding: 15px;
+    margin: 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px 2px rgba(105, 105, 105, 0.52);
+}
+.announcement .content-ann{
+    position: relative;
+    height: 100%;
+    padding: 10px;
+    background-color: rgb(248, 248, 248);
+}
+.module-details{
+    position: relative;
+    padding: 10px;
+}
+.module-details strong, p{
+    position: relative;
+    color: rgb(77, 75, 75);
+    font-weight: 700;
+}
+.module-details .body-cont{
+    position: relative;
+    margin-top: 50px;
+}
+.module-details .body-cont p{
+    position: relative;
+    font-weight: 600;
+    color: #585858;
+}
+.module-details .end-cont{
+    position: relative;
+    margin-top: 50px;
+}
+.module-details .end-cont p{
+    position: relative;
+    font-weight: bold;
+}
+.tbl{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.table-cont{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+table{
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    color: gray;
+
+}
+table thead tr th{
+    padding: 10px;
+    text-align: center;
+    background-color: #00535e;
+}
+table tbody tr td{
+    padding: 15px;
+    text-align: left;
+    color: black;
+    font-weight: 300;
+}

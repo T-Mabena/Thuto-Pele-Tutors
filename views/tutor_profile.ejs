@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="/css/available-tutors.css">
+  <link rel="stylesheet icon" href="/img/bookIcon.png">
+  <title>Tutor Profile.</title>
+</head>
+
+<body >
+
+    <div class="loader" id="loader">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- <div class="left-nav-bar">
+        <img src="/img/logo2.png" alt="">
+        <p>Tutor's Locator.</p>
+        </div> -->
+        <div class="container">
+            <a href="#" class="navbar-brand"><i class="fas fa-code me-2"></i>Thuto Pele - Tutors</a>
+
+            <button class="navbar-toggler" data-bs-target="#my-nav" data-bs-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="my-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class = "nav-item active">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-home me-1"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/learner/login" class="nav-link">
+                            <i class="fas fa-user-plus me-1"></i>
+                            Login
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-globe me-1"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/contact" class="nav-link">
+                            <i class="fas fa-envelope me-1"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </nav>
+
+    <section id="main-section" style="background-color: white;">
+        <section id="sectionB" style="width: 50%;">
+            <div class="bar-section" style="position: relative;  overflow: hidden; display: flex; flex-direction: row;">
+                <div class="img-div">
+                    <img src="/Tutors/<%= user.Profile_Photo%>" width="300px" height="200px" alt="">
+                </div>
+                <div class="div-det">
+
+                    <div class="personal-info">
+                        <div class="name-star">
+                            <h1><%= user.Name %>  <%= user.Surname %></h1>
+                            <div class="start-icon">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            </div>
+                            <p><%= user.Email %></p>
+                        </div>
+            
+                        <div class="name-star">
+                            <h4>Date Of Birth:</h4>
+                            <h1><%= user.Date_Of_Birth %></h1>
+                        </div><br>
+            
+                    </div>
+                    <div class="btn" 
+                        style="position: absolute; right: 80px; bottom: 15px; display: flex; flex-direction: row; gap: 20px; width: 100px;">
+                        <% if(token == ""){ %>
+                            <a href= "/find/tutor" class="btn btn-warning btn-md">Back</a>
+                        <% } else {%>
+                            <input type="hidden" value="<%= decode.user._id %>" id="learner_id"> 
+                            <input type="hidden" value="<%= token %>" id="tkn"> 
+                            <input type="hidden" value="<%= user._id %>" id="tutor_id"> 
+    
+                            <a href= "/learner/find/tutor/<%= decode.user._id %>/<%= token %>/find-tutor" class="btn btn-warning btn-md">Back</a>
+                            <button class="btn btn-primary btn-md book">Request</button>
+                        <% }%>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sectionB">
+            <div class="tutor-info-right" style="width:100%">
+                
+        
+                <div class="story-info">
+                    <div class="name-star">
+                        <h4>Language:</h4>
+                        <p>English</p>
+                    </div>
+        
+                    <div class="name-star">
+                        <h4>Subject Name:</h4>
+                        <p><%= user.Subject_Name %></p>
+                    </div>
+
+                    <div class="name-star">
+                        <h4>Subject Price:</h4>
+                        <p><%= user.Subject_Price %></p>
+                    </div>
+                    <div class="name-star">
+                        <h4>Subject Method:</h4>
+                        <p><%= user.Subject_Method %></p>
+                    </div>
+        
+                </div>
+        
+                <div class="story-info">
+                    <div class="name-star">
+                        <h4>City:</h4>
+                        <p><%= user.City %></p>
+                    </div>
+                    <div class="name-star">
+                        <h4>Address:</h4>
+                        <p><%= user.Address %></p>
+                    </div>
+                    <div class="name-star">
+                        <h4>Gender:</h4>
+                        <h1><%= user.Gender %></h1>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="name-star">
+                        <h4>Phone:</h4>
+                        <p><%= user.Phone %></p>
+                    </div>
+                    <div class="name-star">
+                        <h4>Alternative Phone:</h4>
+                        <p><%= user.Alt_Phone %></p>
+                    </div>
+                    <div class="name-star">
+                        <h4>About Me:</h4>
+                        <p><%= user.About_Me %></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+ 
+
+    <!-- <div class="footer">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-heading">
+                <h6>System.</h6>
+                <div class="line">
+    
+                </div>
+                </div>
+            <div class="img-div">
+                <img src="/img/bookicon7.jfif" alt="">
+            </div>
+                
+            </div>
+            
+            <div class="col-md-3">
+                
+                <div class="footer-heading">
+                <h6>Quick Links.</h6>
+                <div class="line">
+                    
+                </div>
+                </div>
+                <ul>
+                    <li><a href="/" target="_blank">HOME</a></li>
+                    <li><a href="/about" target="_blank">ABOUT</a></li>
+                    <li><a href="/contact" target="_blank">CONTACT US</a></li>
+                </ul>
+                
+                
+            </div>
+
+            <div class="col-md-3">
+                
+                <div class="footer-heading">
+                <h6>Details.</h6>
+                <div class="line">
+                    
+                </div>
+                </div>
+                <p>
+                    <ul><li><a href="#" target="_blank">WEBSITE</a></li></ul>
+                </p>
+            
+                
+            </div>
+
+            <div class="col-md-3">
+                
+                <div class="footer-heading">
+                <h6>Social Media.</h6>
+                <div class="line">
+                    
+                </div>
+                </div>
+                <ul>
+                    <li><small><i class="fa-brands fa-facebook"></i><a href="#" target="_blank"> Facebook</a></small></li>
+                    <li><small><i class="fa-brands fa-twitter"></i><a href="#" target="_blank"> Twitter</a></small></li>
+                    <li><small><i class="fa-brands fa-instagram"></i><a href="#" target="_blank"> Instagram</a></small></li>
+            
+                </ul>
+                
+                
+            </div>
+    
+        </div>
+    </div> -->
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+
+  <script>
+    let lern_id = document.querySelector('#learner_id').value;
+    let tut_id = document.querySelector('#tutor_id').value;
+    let tkn = document.querySelector('#tkn').value;
+    
+    document.querySelector(".book").addEventListener('click', ()=>{
+
+        const data = {
+            id: lern_id,
+            token: tkn,
+            uid: tut_id
+        }
+
+        swal({
+            title: "Ready to request a tutor?",
+            text: "Do not worry, once you request we will then notify a tutor immediatly!",
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((confirm) => {
+            if (confirm) {
+
+                fetch("/api/tutor/request", {
+                method: 'POST',
+                headers: { "Content-type": "application/JSON" },
+                body: JSON.stringify({ data })
+            })
+            .then(res => {
+                return res.json();
+            })
+            .then(info => {
+                switch (info.code) {
+                case 411:
+                    swal("Success", info.message, "success")
+                    setTimeout(()=>{
+                    location.href= `/learner/find/tutor/${info.user._id}/${info.token}/find-tutor`
+                    }, 4000)
+                    break;
+                
+                default:
+                swal("Error", info.message, "error")
+                    break;
+                }
+                console.log(info.message)
+            })
+
+
+            }
+        })
+
+    })
+
+  </script>
+</body>
+
+</html>

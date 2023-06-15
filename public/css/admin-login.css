@@ -1,0 +1,170 @@
+
+body{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    background-color: #4e657a;
+    padding: 0;
+    margin: 0;
+}
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black url(../loader/ring-preloader.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+nav{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: #3a5870;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    gap: 200px;
+}
+.nav-bar{
+    position: relative;
+    width: 40%;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+}
+.nav-bar img{
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+}
+.nav-bar p{
+    position: relative;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Turret Road', cursive;
+    color: #478778;
+    letter-spacing: 3px;
+    padding: 10px;
+}
+
+.icons{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+}
+.icons ul{
+    position: relative;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.icons span{
+    position: relative;
+    color: rgb(212, 212, 212);
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+.login-container{
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-box{
+    position: relative;
+    width: 30%;
+    padding: 20px;
+    background-color: #3a5266;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+.heading{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.heading p{
+    position: relative;
+    color: rgb(182, 179, 179);
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+}
+.input-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.input-box label{
+    position: relative;
+    margin: 5px;
+    color: rgb(226, 226, 226);
+    font-size: 18px;
+    font-weight: 700;
+}
+.input-box input{
+    position: relative;
+    outline: 0;
+    border: 0;
+    padding: 15px;
+    margin: 5px;
+    background: #54697a;
+    color: gray;
+    font-size: 18px;
+    font-weight: 700;
+}
+.btn-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+}
+.btn-box button{
+    position: relative;
+    outline: 0;
+    border: 0;
+    padding: 15px;
+    margin: 5px;
+    margin-bottom: 20px;
+    background: rgb(93, 170, 93);
+    color: rgb(78, 78, 78);
+    font-size: 16px;
+    font-weight: 700;
+}
+.btn-box button:hover{
+    background: rgb(57, 109, 57);
+    font-style: italic;
+    cursor: pointer;
+    transition: 1s;
+}
+footer{
+    width: 100%;
+    bottom: 0;
+    background-color: #6e8292;
+}
+.footer-box{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    padding: 10px;
+    justify-content: center;
+}
+.footer-box p{
+    color: rgb(70, 70, 70);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

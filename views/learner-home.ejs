@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="/css/learner-home.css">
+    <link rel="stylesheet icon" href="/img/logo2.png">
+
+    <title>Home</title>
+</head>
+<body>
+    <div class="black"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- <div class="left-nav-bar">
+        <img src="/img/logo2.png" alt="">
+        <p>Tutor's Locator.</p>
+        </div> -->
+        <div class="container">
+            <a href="#" class="navbar-brand"><i class="fas fa-code me-2"></i>Thuto Pele - Tutors</a>
+
+            <button class="navbar-toggler" data-bs-target="#my-nav" data-bs-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="my-nav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class = "nav-item active">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-home me-1"></i>
+                            Home
+                        </a>
+                    </li> -->
+                    <li class = "nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-globe me-1"></i>
+                            About
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/contact" class="nav-link">
+                            <i class="fas fa-envelope me-1"></i>
+                            Contact
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/learner/api/auth/learner/logout?token=<%= token %>" class="nav-link logout-btn">
+                            <i class="fas fa-user-plus me-1"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </nav>
+    <div class="white-bg"></div>
+    <div class="link-container bg-dark mt-15">
+        <div class="links">
+            <ul>
+                <li><a href="#">Calender</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="/learner/find/tutor/<%= user._id%>/<%= token %>/find-tutor">Find Tutor</a></li>
+            </ul>
+        </div>
+        <p class="webToken" style="display: none;"><%= token %></p>
+    </div>    
+
+    <section id="student-Section">
+        <div class="left-section bg-dark">
+            <div class="profile">
+                <div class="image">
+                    <img src="/img/user.png" alt="">
+                </div>
+                <div class="inputs">
+                    <p class="name-el"><%= user.Name %> <%= user.Surname %></p>
+                </div>
+
+                <div class="text">
+                    <p style="color: white;opacity: 0.7;">Dear <%= user.Surname %></p>
+                    <br>
+                    <p style="color: white;opacity: 0.7;">Welcome back... hope you have found a tutor yet, if not, worry no more just click on the "Find tutor" link above.</p>
+                    <br>
+                    <p style="color: white;opacity: 0.7;">Enjoy the rest of your day!</p>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="stud-content">
+                <div class="left-contents">
+                    <div class="modules">
+                        <div class="heading">
+                            <h2>Modules:</h2>
+                        </div>
+                        <div class="subjects"></div>
+        
+                    </div>
+                </div>
+        
+                <div class="right-contents">
+                    <div class="announcement">
+                        <div class="heading">
+                            <h2>Announcements:</h2>
+                        </div>
+        
+                        <div class="content-ann"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="tbl">
+                <div class="table-cont table-responsive">
+                    <input type="hidden" value="<%= user._id %>" id="uid">
+                    <table class="table table-striped" id="learner_tbl">
+                        <thead>
+                            <tr>
+                                <th>ID:</th>
+                                <th>Learner Name:</th>
+                                <th>Learner Surname:</th>
+                                <th>Subject:</th>
+                                <th>Tutor Name:</th>
+                                <th>Tutor Surname:</th>
+                                <th>Tutor Email:</th>
+                                <th>Status:</th>
+        
+                            </tr>
+                        </thead>
+                        <tbody id="learner-table">
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.js"></script>
+     <!-- Bootstrap -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  
+     <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+   
+     <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+
+     <script src="/javascript/learner-home.js"></script>
+</body>
+</html>

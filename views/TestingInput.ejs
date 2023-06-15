@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/tutor-home.css">
+    <title>Update Tutor</title>
+</head>
+<body>
+    
+    <section id="update-section">
+
+        <form action="/tutor/update/<%= user._id %>/<%= token %>" method="post" class="update-form">
+            <div class="first">
+                <div class="personal-details">
+                    <span>Personal Details:</span>
+    
+                    <div class="fields">
+                        <div class="input-fields">
+                            <label for="">Full Name</label>
+                            <input type="text" class="form-control form-control-lg" value="<%= user.Name %>" name="name">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control form-control-lg" value="<%= user.Surname %>" name="surname">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Gender</label>
+                            <input type="text" class="form-control form-control-lg" value="<%= user.Gender %>" name="gender">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="personal-details">
+                    <span>Contact Details:</span>
+    
+                    <div class="fields">
+                        <div class="input-fields">
+                            <label for="">Email</label>
+                            <input type="email"  class="form-control form-control-lg" value="<%= user.Email %>" name="email">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Phone</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.Phone %>" name="phone">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Altenative Phone</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.Alt_Phone %>" name="alt_Phone">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="personal-details">
+                    <span>Address Details:</span>
+    
+                    <div class="fields">
+                        <div class="input-fields">
+                            <label for="">City Name</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.City %>" name="city">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Date Of Birth:</label>
+                            <input type="date"  class="form-control form-control-lg" value="<%= user.Date_Of_Birth %>" name="city">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Address</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.Address %>" name="address">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="personal-details">
+                    <span>Subject Details:</span>
+    
+                    <div class="fields">
+                        <div class="input-fields">
+                            <label for="">Subject Name</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.Subject_Name %>" name="special">
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Subject Price</label>
+                            <input type="text"  class="form-control form-control-lg" value="<%= user.Subject_Price %>" name="price">
+                        </div>
+                        <div class="input-fields">
+                                <label for="">Tutoring Method:</label>
+                                <input type="text" value="<%= user.Subject_Method%>" class="form-control form-control-lg" name="tutor_method">
+                        </div>
+                    </div>
+                </div>
+                <div class="personal-details">
+                    <span>About Me:</span>
+
+                    <div class="fields">
+                        <div class="input-fields">
+                            <label for="">Information:</label>
+                            <textarea 
+                                name="about_me" 
+                                id="" 
+                                cols="30" 
+                                rows="10"
+                                class="form-control form-control-lg"
+                                value="<%= user.About_Me%>"></textarea>
+                        </div>
+                        <div class="input-fields">
+                            <label for="">Profile Image</label>
+                            <input type="file" class="form-control form-control-lg" name="profile">
+    
+                            <input type="hidden" value="<%= user.Profile_Photo %>" name="old_img">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+    
+        </form>
+
+    </section>
+</body>
+</html>

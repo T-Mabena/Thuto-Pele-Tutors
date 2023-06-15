@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="/img/logo7-removebg-preview.png" rel="icon">
+    <link rel="stylesheet" href="/css/application.css">
+    <title>Tutor Application</title>
+</head>
+<body onload="loading()">
+
+    <div class="loader"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand"><img src="/img/logo7-removebg-preview.png" alt=""> Thuto Pele</a>
+  
+            <button class="navbar-toggler" data-bs-target="#my-nav" data-bs-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+  
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="my-nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class = "nav-item active">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-home me-1"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user-plus me-1"></i>
+                            Get Help
+                        </a>
+                    </li>
+                    <li class = "nav-item active">
+                        <a href="/contact" class="nav-link">
+                            <i class="fas fa-envelope me-1"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="sectionA">
+        <div class="app-container">
+            <div class="heading">
+                <h1>Tutor Application Form:</h1>
+            </div>
+
+            <form action="#" id="form0">
+                <h3>Application Preparation:</h3>
+                <p>First and foremost, We'd like to thank you for taking part in changing the life of our students. Before you commence with application, please ensure that you have the following:</p>
+                <div class="pre-apply">
+                    <p><i class="fa-solid fa-circle-check"></i> Valid Email Address.</p>
+                    <p><i class="fa-solid fa-circle-check"></i> Had at least 2/3 tutorial sessions (Online or In-person).</p>
+                    <p> <i class="fa-solid fa-circle-check"></i> Prove that you are good at that subject.</p>
+                    <p><i class="fa-solid fa-circle-check"></i> Have you picture ready to be uploaded.</p>
+                </div>
+
+                <div class="btn-box">
+                    <button id="calcel">Cancel</button>
+                    <button id="next0" >Continue</button>
+                </div>
+            </form>
+
+            <form action="#" id="form1">
+                <h3>PERSONAL INFO:</h3>
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Full Name..." id="ful-name">
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Last Name..." id="last-name">
+                <input type="text" class="form-control form-control-lg" type="date" placeholder="Date Of Birth..." id="dob">
+
+                <div class="one-btn">
+                    <button id="back0">Back</button>
+                    <button id="next1">Next</button>
+                </div>
+            </form>
+
+            <form action="#" id="form2">
+                <h3>CONTACT DETAILS:</h3>
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Contact Number..." id="phone-el">
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Alternative Number..." id="alt-el">
+                <textarea 
+                    class="form-control form-control-lg"
+                    name=""
+                    id="about" 
+                    cols="30" 
+                    rows="10"
+                    placeholder="Tell Students more about yourself..."></textarea>
+
+                <div class="btn-box">
+                    <button id="back1">Back</button>
+                    <button id="next2">Next</button>
+                </div>
+            </form>
+
+            <form action="#" id="form3">
+                <h3>LOCATION DETAILS:</h3>
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Address..." id="address-el">
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="City..." id="city-el">
+                <select class="form-control form-control-lg" name="" id="gender-el">
+                    <option value="#">Select Gender...</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <div class="btn-box">
+                    <button id="back2">Back</button>
+                    <button id="next3">Next</button>
+                </div>
+            </form>
+
+            <form action="#" id="form4">
+                <h3>SUBJECT DETAILS:</h3>
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Subject name..." id="special">
+                <input type="text" class="form-control form-control-lg" type="text" placeholder="Subject Price/Hour..." id="price">
+                <select class="form-control form-control-lg" name="" id="method-el">
+                    <option value="#">Prefered Method:</option>
+                    <option value="Online">Online</option>
+                    <option value="In-person">In-person</option>
+                    <option value="Both">Both</option>
+                </select>
+
+                <div class="btn-box">
+                    <button id="back3">Back</button>
+                    <button id="next4">Next</button>
+                </div>
+            </form>
+
+            <form action="#" id="form5">
+                <h3>CREATE ACCOUNT:</h3>
+                <input type="email" class="form-control form-control-lg" type="email" placeholder="Email..." id="email-el">
+                <input type="password" class="form-control form-control-lg" type="password" placeholder="Password..." id="password1">
+                <input type="password" class="form-control form-control-lg" type="password" placeholder="Confirm Password..." id="password2">
+                <input type="file" class="form-control form-control-lg" id="photo">
+
+                <div class="btn-box">
+                    <button id="back4">Back</button>
+                    <button id="submit" onclick="register()">Submit</button>
+                </div>
+            </form>
+
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col"><small>Personal <br> Details</small></div>
+                <div class="step-col"><small>Contact <br> Details</small></div>
+                <div class="step-col"><small>Location <br> Details</small></div>
+                <div class="step-col"><small>Subject <br> Details</small></div>
+                <div class="step-col"><small>Complete <br> Application</small></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="footer-content">
+            <p>copyright &copy; 2023.</p>
+        </div>
+    </section>
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/tutor-reg.js"></script>
+
+    <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

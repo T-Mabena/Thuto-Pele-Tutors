@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="/css/available-tutors.css">
+  <link rel="stylesheet icon" href="/img/logo2.png">
+  <title>Find Tutor.</title>
+</head>
+
+<body >
+
+  <div class="loader" id="loader">
+    <!-- <img src="gif/Loading_2.gif" alt=""> -->
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a href="#" class="navbar-brand"><i class="fas fa-code me-2"></i>Thuto Pele - Tutors</a>
+
+        <button class="navbar-toggler" data-bs-target="#my-nav" data-bs-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="my-nav">
+            <ul class="navbar-nav ms-auto">
+                <li class = "nav-item active">
+                    <a href='/learner/home/<%= user._id%>/<%= token %>' class="nav-link">
+                        <i class="fas fa-home me-1"></i>
+                        Home
+                    </a>
+                </li>
+                <li class = "nav-item active">
+                    <a href="/learner/api/auth/logout?token=<%= token %>" id="logout" class="nav-link">
+                        <i class="fas fa-user-plus me-1"></i>
+                        Logout
+                    </a>
+                </li>
+                <li class = "nav-item active">
+                    <a href="/about" class="nav-link">
+                        <i class="fas fa-globe me-1"></i>
+                        About
+                    </a>
+                </li>
+                <!-- <li class = "nav-item active">
+                    <a href="/contact" class="nav-link">
+                        <i class="fas fa-envelope me-1"></i>
+                        Contact
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <section id="main-section">
+      <section id="sectionB">
+          <div class="bar-section">
+
+            <div class="bar1">
+              <p class="text"><i class="fa-solid fa-users"></i> Find Tutor</p>
+      
+              <div class="learner">
+                <div class="dropdown">
+                  <p id="fulname-el"><%= user.Name %> <i class="fa-solid fa-chevron-down"></i></p>
+                    <p></p>
+                  <div class="dropdown-content">
+                    <small id="email-el"><%= user.Email %></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="bar2">
+              <p class="filter">Select Filter:</p>
+              <div class="dropdown">
+                <p>Subjects: <i class="fa-solid fa-chevron-down"></i></p>
+                  <p></p>
+                <div class="dropdown-content">
+                    <p>Mathematics</p>
+                    <p>Mathematical Literacy</p>
+                    <p>Physical Science</p>
+                    <p>Life Science</p>
+                    <p>Agricultural Science</p>
+                </div>
+              </div>
+              <div class="dropdown">
+                <p>Languages: <i class="fa-solid fa-chevron-down"></i></p>
+                  <p></p>
+                <div class="dropdown-content">
+                    <p>English (Primary)</p>
+                    <p>Sepedi</p>
+                    <p>Setswana</p>
+                    <p>Isizulu</p>
+                    <p>Tsonga</p>
+                </div>
+              </div>
+              <div class="dropdown">
+                <p>Availability: <i class="fa-solid fa-chevron-down"></i></p>
+                  <p></p>
+                <div class="dropdown-content">
+                    <p>Fridays</p>
+                    <p>Saturdays</p>
+                    <p>Sundays</p>
+                    <p>Holidays</p>
+                </div>
+              </div>
+              <div class="dropdown">
+                <p>Prices: <i class="fa-solid fa-chevron-down"></i></p>
+                  <p></p>
+                <div class="dropdown-content">
+                    <p>R100.00</p>
+                    <p>R75.00</p>
+                    <p>R50.00</p>
+                    <p>R25.00</p>
+                    <p>R0.00</p>
+                </div>
+              </div>
+      
+              <div class="bar2-inputs">
+                <input type="text" placeholder="Seach By Name..." id="search" ><i class="fa-solid fa-magnifying-glass"></i>
+                <input type="checkbox"><p>Free Trials</p>
+                <input type="checkbox"><p>Favourates</p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+
+    <section id="sectionB">
+      <input type="hidden" value="<%= user._id %>" id="id">
+      <input type="hidden" value="<%= token %>" id="token">
+      
+      <% if(tutors != ""){%>
+
+        <div class="left-tutor-section">
+          <% tutors.forEach((row, index)=> { %>
+            <div class="tutor-info">
+              <div class="image">
+                <img src="/Tutors/<%= row.Profile_Photo %>" alt="">
+              </div>
+        
+              <div class="tutor-info-right">
+                <div class="personal-info">
+                  <div class="name-star">
+                    <h1>
+                      <%= row.Name %>
+                    </h1>
+                    <div class="start-icon">
+                      <i class="fa-sharp fa-solid fa-star"></i>
+                      <i class="fa-sharp fa-solid fa-star"></i>
+                      <i class="fa-sharp fa-solid fa-star"></i>
+                      <i class="fa-sharp fa-solid fa-star"></i>
+                      <i class="fa-sharp fa-solid fa-star"></i>
+                    </div>
+                    <p>Location</p>
+                  </div>
+        
+                  <div class="prc-hour">
+                    <h2 id="price">
+                      <%= row.Subject_Price %>
+                    </h2>
+                  </div>
+        
+                  <div class="btns">
+                    <a href="/tutor/profile/<%= row._id %>/learner?tkn=<%= token %>" class="more">More</a>
+                    <button href="#" onclick="GetDetails('<%= row._id%>')" class="request">Request</button>
+                  </div>
+                </div>
+        
+                <div class="subject-info">
+                  <div class="language">
+                    <h4>Language:</h4>
+                    <p>English</p>
+                  </div>
+        
+                  <div class="Subject">
+                    <h4>Subject:</h4>
+                    <p>
+                      <%=row.Subject_Name %>
+                    </p>
+                  </div>
+        
+                  <div class="curr">
+                    <h4>Curriculum/Topic:</h4>
+                    <p>IT Software Developer</p>
+                  </div>
+                </div>
+        
+                <div class="story-info">
+                  <div class="about-content">
+                    <h4>About Me:</h4>
+                    <p>
+                      <%= row.About_Me%>
+                    </p>
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+          <%})%>
+        </div>
+
+
+      <div class="right-tutor">
+        <div class="content-details">
+            <div class="image">
+                <img src="/img/tutor.webp" alt="">
+            </div>
+
+            <div class="content-text">
+              <p class="near-you">
+                Looking for a tutor near you? <br>
+                <span>We know our tutors – we can search for you!</span>
+              </p>
+               <small>Click "<strong>Get a tutor</strong>" and we'll send matching tutors straight to your inbox. Plus only 40% of our tutor profiles are public – don't miss out on the other 60%</small>
+            </div>
+            <div class="btn">
+              <button>Get Tutor</button>
+            </div>
+        </div>
+
+        <div class="content2">
+          <div class="money-back">
+            <img src="/img/good-match-guarantee.svg" alt="">
+          </div>
+
+          <div class="content2-text">
+            <h2>Our 5 lesson satisfaction guarantee</h2>
+            <p>After 5 lessons, if you aren't satisfied with the change you've seen in your child, we'll give you a full refund.</p>
+
+            <div class="certain">
+              <h5>Are you serious?</h5>
+              <small>Absolutely! We have a <strong>97% success rate</strong> with our customers. If you're unlucky enough to be in the 3% that it didn't work for, we don't want you to have to pay for it.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%} else {%>
+        <h1 class="text-center text-secondary" style="margin: 50px auto;">No Tutors available at this moment. We apologise for any inconvenience!</h1>
+      <%}%>
+    </section>
+  </section>
+
+ 
+
+  <div class="footer">
+    <div class="row">
+          <div class="col-md-3">
+            <div class="footer-heading">
+              <h6>System.</h6>
+              <div class="line">
+  
+              </div>
+            </div>
+           <div class="img-div">
+            <img src="/img/logo2.png" alt="">
+           </div>
+            
+          </div>
+          
+          <div class="col-md-3">
+            
+            <div class="footer-heading">
+              <h6>Quick Links.</h6>
+              <div class="line">
+                
+              </div>
+            </div>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+            
+            
+          </div>
+
+          <div class="col-md-3">
+            
+            <div class="footer-heading">
+              <h6>Details.</h6>
+              <div class="line">
+                
+              </div>
+            </div>
+            <p>
+                <ul><li><a href="/" target="_blank">WEBSITE</a></li></ul>
+            </p>
+         
+            
+          </div>
+
+          <div class="col-md-3">
+            
+            <div class="footer-heading">
+              <h6>Social Media.</h6>
+              <div class="line">
+                
+              </div>
+            </div>
+            <ul>
+                <li><small><i class="fa-brands fa-facebook"></i><a href="#" target="_blank"> Facebook</a></small></li>
+                <li><small><i class="fa-brands fa-twitter"></i><a href="#" target="_blank"> Twitter</a></small></li>
+                <li><small><i class="fa-brands fa-instagram"></i><a href="#" target="_blank"> Instagram</a></small></li>
+           
+            </ul>
+            
+            
+          </div>
+  
+  </div>
+</div>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    // /<%= user._id %>/tutor/<%= token %>/request?tutor=${row._id}
+
+    const id = document.getElementById("id").value;
+    const tk = document.getElementById("token").value;
+
+    const GetDetails = (uid) => {
+      const data = {
+        id: id,
+        token: tk,
+        uid: uid
+      }
+
+      swal({
+        title: "Ready to request a tutor?",
+        text: "Do not worry, once you request we will then notify a tutor immediatly!",
+        icon: "info",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((confirm) => {
+        if (confirm) {
+
+            fetch("/api/tutor/request", {
+            method: 'POST',
+            headers: { "Content-type": "application/JSON" },
+            body: JSON.stringify({ data })
+          })
+          .then(res => {
+            return res.json();
+          })
+          .then(info => {
+            switch (info.code) {
+              case 411:
+                swal("Success", info.message, "success")
+                setTimeout(()=>{
+                  location.href= `/learner/find/tutor/${info.user._id}/${info.token}/find-tutor`
+                }, 4000)
+                break;
+            
+              default:
+              swal("Error", info.message, "error")
+                break;
+            }
+          })
+
+
+        }
+      })
+      
+    }
+
+  </script>
+</body>
+
+</html>

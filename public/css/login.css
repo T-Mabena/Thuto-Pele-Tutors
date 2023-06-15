@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+nav{
+    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.52);
+}
+
+.container img{
+    width: 60px;
+    height: 60px;
+}
+
+#login-section{
+    height: 100%;
+    background: rgb(241, 241, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-content{
+    background: white;
+    box-shadow: 2px 5px 4px 3px rgba(0,0,0,0.52);
+    width: 30%;
+    margin: 70px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.login-info{
+    padding: 15px;
+}
+.inputs{
+    padding: 10px 0;
+    width: 100%;
+}
+.colm{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.colm label{
+    text-align: left;
+    margin: 5px 0;
+    font-weight: 500;
+    color: gray;
+}
+.colm label::after{
+    content: '*';
+    color: red;
+    font-size: 20px;
+}
+.colm input{
+    border: 0;
+    outline: none;
+    padding: 8px 15px;
+    background-color: gainsboro;
+}
+.forgot{
+    width: 100%;
+    text-align: right;
+    padding: 0 10px;
+}
+.forgot a{
+    text-decoration: none;
+    color: rgb(39, 39, 39);
+    transition: .5s;
+    font-size: 12px;
+    font-weight: 500;
+}
+.forgot a:hover{
+    color: #009688;
+}
+.inputs .btn{
+    width: 100%;
+    margin-top: 30px;
+}
+.inputs .btn button{
+    border: 0;
+    outline: none;
+    background: linear-gradient(to right, rgb(29, 29, 29), #009688);
+    padding: 8px;
+    width: 100%;
+    font-weight: 500;
+    color: rgb(192, 189, 189);
+    transition: .6s;
+}
+.inputs .btn button:hover{
+    color: white;
+    background: linear-gradient(to right,#009688, rgb(29, 29, 29))
+}
+.sign-up{
+    padding: 30px 0;
+    width: 100%;
+}
+.sign-up p{
+    color: gray;
+    font-weight: 500;
+}
+.sign-up a{
+    text-decoration: none;
+    color: rgb(0, 153, 255);
+    font-weight: 500;
+    transition: .5s;
+}
+.sign-up a:hover{
+    color: #02635b;
+}
+.link-icons{
+    padding: 30px 0;
+}
+.link-icons i{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #009688;
+    color: #009688;
+    font-size: 35px;
+    transition: .5s;
+}
+.link-icons i:hover{
+    cursor: pointer;
+    transform: translateY(-7px);
+}
+
+
+#footer{
+    height: 50px;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+}
+.footer-content{
+    padding: 20px 0;
+    text-align: center;
+}
+@media screen and (max-width: 770px) {
+    #login-section{
+        padding: 0 30px;
+    }
+    .login-content{
+        width: 50%;
+    }
+    .login-info{
+        padding: 8px;
+    }
+    .colm label{
+        font-size: 12px;
+    }
+    .sign-up p{
+        font-size: 12px;
+    }
+    .footer-content p{
+        font-size: 10px;
+    }
+}

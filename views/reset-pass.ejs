@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- https://www.w3schools.com/jquery/jquery_get_started.asp -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet icon" href="/img/logo2.png">
+    <title>Choose Password</title>
+</head>
+<body>
+    <div class="loader" id="loader"></div>
+    <div class="blank"></div>
+
+    <nav>
+        <div class="left-nav-bar">
+            <img src="/img/logo2.png" alt="">
+            <p>Tutor's Locator.</p>
+        </div>
+
+        <div class="right-nav-links">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
+    </nav>
+    <p class="code" style="display: none;"><%= code %></p>
+
+    <section id="login-section">
+        <div class="login-content">
+            <div class="login-info">
+                <h1>Reset Password</h1>
+                <div class="inputs">
+                    <div class="message"></div>
+                    <div class="colm">
+                        <label for="pass">Choose Password:</label>
+                        <input type="password" placeholder="Enter your Email..." name="password1" id="pass1">
+                        <input type="hidden" id="id" value="<%= id %>">
+                    </div>
+                    <div class="colm">
+                        <label for="pass">Confirm Password:</label>
+                        <input type="password" placeholder="Enter your Email..." name="password2" id="pass2">
+                    </div>
+
+                    <div class="btn">
+                        <button onclick="ResetPassword()">Reset Password</button>
+                    </div>
+                </div>
+                <div class="mesage"></div>
+
+                <div class="sign-up">
+                    <div class="link-icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer">
+        <div class="footer-content">
+            <p>copyright &copy; 2023.</p>
+        </div>
+    </section>
+
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  
+  <!-- https://flickity.metafizzy.co/#initialize-with-jquery -->
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/5dd83d6fa5.js" crossorigin="anonymous"></script>
+
+  <script>
+
+    const ResetPassword = ()=>{
+
+        const id = document.querySelector('#id').value;
+        const pass1 = document.querySelector('#pass1').value;
+        const pass2 = document.querySelector('#pass2').value;
+        const code = document.querySelector('.code').textContent;
+
+        if (pass1 === ''|| pass2 === '') {
+            document.querySelector('#pass1').value =""
+            document.querySelector('#pass2').value =""
+
+            let html = `
+                <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    <strong>Passwords do not match!</strong>
+                </div>
+                `
+
+                document.querySelector('.message').innerHTML = html;
+        }
+            
+        if (pass1 !== pass2) {
+           document.querySelector('#pass1').value =""
+            document.querySelector('#pass2').value =""
+
+            let html = `
+                <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    <strong>Passwords do not match!</strong>
+                </div>
+                `
+
+                document.querySelector('.message').innerHTML = html;
+        }
+        else{
+            document.querySelector('#pass1').value =""
+            document.querySelector('#pass2').value =""
+
+            // const fd = new FormData()
+            // fd.append('id', id)
+            // fd.append('password', pass2)
+            const fd = {
+                Password: pass2,
+                id: id,
+                cd: code
+            }
+
+            fetch('/api/auth/password/change', {
+                method: 'POST',
+                headers: {"Content-type": "application/JSON"},
+                body: JSON.stringify(fd)
+            })
+            .then( res => {return res.json()})
+            .then( info => {
+
+                let html = `
+                <div class="alert alert-dismissible fade show alert-${info.type}" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                    <strong>${info.message}</strong>
+                </div>
+                `
+
+                document.querySelector('.message').innerHTML = html;
+
+                if (info.usernm === "tutor") {
+                    swal("Success", info.message, "success")
+                    setTimeout(() => {
+                     location.href = "/tutor/login"
+                    }, 2000);
+                    
+                } else if(info.usernm === "learner"){
+                    swal("Success", info.message, "success")
+                    setTimeout(() => {
+                        location.href = "/"
+                    }, 2000);
+                }
+
+
+            })
+        }
+
+    }
+                    
+        
+    
+  </script>
+</body>
+</html>

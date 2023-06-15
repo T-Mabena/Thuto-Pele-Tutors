@@ -1,0 +1,61 @@
+body{
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.952);
+    margin: 0;
+    padding: 0;
+}
+.about-us{
+    position: relative;
+    margin: 100px;
+    padding: 100px;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 6px 6px 5px 6px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 6px 6px 5px 6px rgba(0,0,0,0.52);
+    -moz-box-shadow: 6px 6px 5px 6px rgba(0,0,0,0.52);
+    background: url(../images/11_Globalisation.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.about-us h1{
+    position: relative;
+    color: darkcyan;
+    text-shadow: 10px;
+    box-sizing: border-box;
+    
+}
+.about-us .logo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+.about-us .logo img{
+    position: relative;
+    width: 100px;
+} 
+.about-us .mission, .sys-rec{
+    position: relative;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    box-shadow: 1px 1px 1px 1px;
+}
+.about-us .mission p,  .sys-rec p{
+    position: relative;
+    width: 80%;
+    align-items: center;
+}
+.about-us .mission h3,  .sys-rec h3{
+    position: relative;
+   margin-bottom: 20px;
+   text-transform: uppercase;
+   color: darkcyan;
+   
+}
